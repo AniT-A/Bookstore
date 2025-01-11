@@ -13,13 +13,13 @@ body {
 }
 
 body.light {
-  background-image: url(./src/assets/Light\ theme.png);
+  background-image: url(./assets/Lighttheme.png);
   background-color: #e2d9bc;
   color: #e2d9bc;
 }
 
 body.dark {
-  background-image: url(./src/assets/Dark\ theme.png);
+  background-image: url(./assets/Darktheme.png);
   background-color: #213a2a;
   color: #e2d9bc;
 }
@@ -56,7 +56,7 @@ a:hover {
   position: relative;
   height: 55%;
   width: 80%;
-  bottom: 5%;
+  bottom: 5rem;
 }
 
 #addbook {
@@ -79,7 +79,7 @@ a:hover {
 
 @media (min-height: 950px) {
   .ag-theme-material {
-    height: 60%;
+    bottom: 9rem;
   }
 
   #addbook {

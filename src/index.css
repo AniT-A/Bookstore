@@ -1,65 +1,88 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
+body {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
+body.light {
+  background-image: url(./src/assets/Light\ theme.png);
+  background-color: #e2d9bc;
+  color: #e2d9bc;
+}
+
+body.dark {
+  background-image: url(./src/assets/Dark\ theme.png);
+  background-color: #213a2a;
+  color: #e2d9bc;
+}
+
+#main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#contrast-icon {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color:#c07e22;
+}
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #c07e22;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: #c07e22;
 }
 
-body {
-  margin: 0;
+.ag-theme-material {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  flex-direction: column;
+  position: relative;
+  height: 55%;
+  width: 80%;
+  bottom: 5%;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+#addbook {
+  position: relative;
+  bottom: 1rem;
+  border-radius: 10px;
+  border: 2px solid;
+  padding: 2px 8px;
+  font-size: 1.5em;
+  font-weight: 600;
+  font-family: Poiret One;
+  letter-spacing: 0.1em;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.2s;
 }
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+#addbook:hover {
+  border-color: #c07e22;
+  color: #c07e22;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@media (min-height: 950px) {
+  .ag-theme-material {
+    height: 60%;
   }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
+
+  #addbook {
+    bottom: 2rem;
   }
 }

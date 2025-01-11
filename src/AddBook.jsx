@@ -5,6 +5,8 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
+import PropTypes from 'prop-types';
+import './index.css';
 
 function AddBook(props) {
     const [open, setOpen] = useState(false)
@@ -29,7 +31,7 @@ function AddBook(props) {
 
     return (
         <>
-            <Button variant="outlined" size="large" backgroundcolor="#bb7f0e" color="black" border="1px solid white" onClick={handleOpen}>Add book</Button><br />
+            <Button id="addbook" variant="outlined" size="large" color="" onClick={handleOpen}>Add book</Button><br />
             <Dialog open={open}>
                 <DialogTitle>New book</DialogTitle>
                 <DialogContent>
@@ -82,5 +84,9 @@ function AddBook(props) {
         </>
     );
 }
+
+AddBook.propTypes = {
+    addBook: PropTypes.func.isRequired,
+};
 
 export default AddBook

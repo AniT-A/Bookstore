@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useCallback } from 'react';
 import { AgGridReact } from 'ag-grid-react';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import ContrastIcon from '@mui/icons-material/Contrast';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddBook from './AddBook';
+import useTheme from './useTheme';
+import './index.css';
 
-import './App.css';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
 
 function App() {
+  const { theme, toggleTheme } = useTheme();
   const [books, setBooks] = useState([]);
   const firebaseUrl = import.meta.env.VITE_FIREBASE_URL;
 
@@ -24,7 +24,6 @@ function App() {
     { 
       headerName: '',
       field: 'id',
-      width: 100,
       cellRenderer: params => 
       <IconButton onClick={() => deleteBook(params.data.id)} size="small" color="error" data-testid="deleteButton">
         <DeleteIcon />
@@ -33,15 +32,19 @@ function App() {
   ]
 
   useEffect(() => {
-    fetchItems();
-  }, [])
+    document.body.className = theme;
+  }, [theme]);
 
-  const fetchItems = () => {
+  const fetchItems = useCallback(() => {
     fetch(`${firebaseUrl}/books.json`)
     .then(response => response.json())
     .then(data => addKeys(data))
     .catch(err => console.error(err))
-  }
+  }, [firebaseUrl])
+
+  useEffect(() => {
+    fetchItems();
+  }, [fetchItems])
 
   const addKeys = (data) => {
     const keys = Object.keys(data);
@@ -69,22 +72,21 @@ function App() {
     .catch(err => console.error(err))
   }
 
+  const autoSizeStrategy = {
+    type: 'fitCellContents'
+  };
+
   return (
-    <>
-      <AppBar position="static">
-        <Toolbar sx={{ backgroundColor: '#bb7f0e'}}>
-          <Typography variant="h3" sx={{ fontFamily: 'Satisfy, cursive', fontWeight: 'bold', width: "100%", alignItems: "center"}}>
-            Bookstore
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <br />
-      <AddBook addBook={addBook} /> 
-      <br />
-      <div className="ag-theme-material" style={{ height: 500, width: 1200 }}>
-        <AgGridReact rowData={books} columnDefs={columnDefs} enableCellTextSelection={true}/>
+    <div id="main" className={theme}>
+      <IconButton id="contrast-icon" onClick={toggleTheme} title="Switch theme">
+        <ContrastIcon sx={{ fontSize: '2.5rem' }} />
+      </IconButton>
+      <div className="ag-theme-material" style={{ }}>
+        <AgGridReact rowData={books} columnDefs={columnDefs} autoSizeStrategy={autoSizeStrategy} enableCellTextSelection={true}/>
       </div>
-    </>
+      <br />
+      <AddBook addBook={addBook} />
+    </div>
   );
 }
 

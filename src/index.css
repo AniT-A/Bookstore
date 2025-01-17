@@ -31,6 +31,7 @@ body.dark {
   width: 100vw;
   align-items: center;
   justify-content: flex-end;
+  gap: 1rem;
 }
 
 #contrast-icon {
@@ -56,7 +57,9 @@ a:hover {
   position: relative;
   height: 55%;
   width: 80%;
-  bottom: 5rem;
+  bottom: 4em;
+  align-content: center;
+  justify-content: center;
 }
 
 #addbook {
@@ -79,7 +82,6 @@ a:hover {
 
 @media (min-height: 950px) {
   .ag-theme-material {
-    bottom: 9rem;
   }
 
   #addbook {

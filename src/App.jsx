@@ -21,8 +21,7 @@ function App() {
     { field: 'year', sortable: true, filter: true},
     { field: 'isbn', sortable: true, filter: true},
     { field: 'price', sortable: true, filter: true},
-    { 
-      headerName: '',
+    { headerName: '',
       field: 'id',
       cellRenderer: params => 
       <IconButton onClick={() => deleteBook(params.data.id)} size="small" color="error" data-testid="deleteButton">
@@ -82,7 +81,7 @@ function App() {
         <ContrastIcon sx={{ fontSize: '2.5rem' }} />
       </IconButton>
       <div className="ag-theme-material" style={{ }}>
-        <AgGridReact rowData={books} columnDefs={columnDefs} autoSizeStrategy={autoSizeStrategy} enableCellTextSelection={true}/>
+        <AgGridReact rowData={books} columnDefs={columnDefs} autoSizeStrategy={autoSizeStrategy} enableCellTextSelection={true} />
       </div>
       <br />
       <AddBook addBook={addBook} />

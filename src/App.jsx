@@ -77,10 +77,10 @@ function App() {
 
   return (
     <div id="main" className={theme}>
-      <IconButton id="contrast-icon" onClick={toggleTheme} title="Switch theme">
-        <ContrastIcon sx={{ fontSize: '2.5rem' }} />
+      <IconButton id="contrast-button" onClick={toggleTheme} title="Switch theme">
+        <ContrastIcon id="contrasticon" />
       </IconButton>
-      <div className="ag-theme-material" style={{ }}>
+      <div className="ag-theme-material">
         <AgGridReact rowData={books} columnDefs={columnDefs} autoSizeStrategy={autoSizeStrategy} enableCellTextSelection={true} />
       </div>
       <br />

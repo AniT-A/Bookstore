@@ -30,11 +30,11 @@ body.dark {
   height: 100vh;
   width: 100vw;
   align-items: center;
-  justify-content: flex-end;
-  gap: 1rem;
+  justify-content: center;
+  /* gap: 1rem; */
 }
 
-#contrast-icon {
+#contrast-button {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -42,6 +42,12 @@ body.dark {
   right: 10px;
   color:#c07e22;
 }
+
+#contrasticon {
+  font-size: 3rem;
+  transition: color 0.2s;
+}
+
 a {
   font-weight: 500;
   color: #c07e22;
@@ -54,16 +60,17 @@ a:hover {
 .ag-theme-material {
   display: flex;
   flex-direction: column;
-  position: relative;
+  position: absolute;
   height: 55%;
   width: 80%;
-  bottom: 4em;
+  margin: 10% auto 0 auto;
   align-content: center;
   justify-content: center;
 }
 
 #addbook {
-  position: relative;
+  display: flex;
+  position: absolute;
   bottom: 1rem;
   border-radius: 10px;
   border: 2px solid;
@@ -81,10 +88,39 @@ a:hover {
 }
 
 @media (min-height: 950px) {
+  #addbook {
+    bottom: 4rem;
+  }
+}
+
+@media (max-width: 50em) {
+  body.dark {
+    background-image: url(./assets/Mobiledark.png);
+    background-color: #213a2a;
+    color: #e2d9bc;
+  }
+
+  body.light {
+    background-image: url(./assets/Mobilelight.png);
+    background-color: #e2d9bc;
+    color: #213a2a;
+  }
+
+  #contrast-button {
+    top: 0;
+    right: 0;
+    padding: 5px;
+  }
+
+  #contrasticon {
+    font-size: 2rem;
+  }
+
   .ag-theme-material {
+    margin: 0;
   }
 
   #addbook {
-    bottom: 2rem;
+    bottom: 5rem;
   }
 }
